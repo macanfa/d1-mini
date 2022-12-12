@@ -4,8 +4,8 @@
 #define led_on 0
 #define led_off 1
 
-const char *ssid = "FASO-72";
-const char *password = "101882anfa";
+const char *ssid = "<SSID>";
+const char *password = "<PASSWORD>";
 const int led_pin = 2;
 
 int counter = 0;
