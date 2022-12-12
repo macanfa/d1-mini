@@ -17,6 +17,90 @@ void trenner()
 	Serial.println("-------------------------------------------------------");
 }
 
+void boardInfo()
+{
+	trenner();
+#if defined(ARDUINO_ARCH_ESP8266)
+	Serial.print("getChipId      : ");
+	Serial.println(ESP.getChipId());
+	Serial.print("getCoreVersion : ");
+	Serial.println(ESP.getCoreVersion());
+	Serial.print("getFullVersion : ");
+	Serial.println(ESP.getFullVersion());
+	Serial.print("CpuFreqMHz     : ");
+	Serial.println(ESP.getCpuFreqMHz());
+	Serial.print("getBootMode    : ");
+	Serial.println(ESP.getBootMode());
+	Serial.print("getBootVersion : ");
+	Serial.println(ESP.getBootVersion());
+	Serial.print("CycleCount     : ");
+	Serial.println(ESP.getCycleCount());
+	Serial.print("getFlashChipId : ");
+	Serial.println(ESP.getFlashChipId());
+	Serial.print("FlashChipMode  : ");
+	Serial.println(ESP.getFlashChipMode());
+	Serial.print("FlashChipSize  : ");
+	Serial.println(ESP.getFlashChipSize());
+	Serial.print("FlashChipSpeed : ");
+	Serial.println(ESP.getFlashChipSpeed());
+	Serial.print("SketchSize     : ");
+	Serial.println(ESP.getSketchSize());
+	Serial.print("SketchMD5      : ");
+	Serial.println(ESP.getSketchMD5());
+	Serial.print("FreeSketchSpace: ");
+	Serial.println(ESP.getFreeSketchSpace());
+	Serial.print("CycleCount     : ");
+	Serial.println(ESP.getCycleCount());
+	Serial.print("FreeHeap       : ");
+	Serial.println(ESP.getFreeHeap());
+	Serial.print("getSdkVersion  : ");
+	Serial.println(ESP.getSdkVersion());
+#elif defined(ARDUINO_ARCH_ESP32)
+	Serial.print("ChipModel      : ");
+	Serial.println(ESP.getChipModel());
+	Serial.print("ChipRevision   : ");
+	Serial.println(ESP.getChipRevision());
+	Serial.print("ChipCores      : ");
+	Serial.println(ESP.getChipCores());
+	Serial.print("CpuFreqMHz     : ");
+	Serial.println(ESP.getCpuFreqMHz());
+	Serial.print("CycleCount     : ");
+	Serial.println(ESP.getCycleCount());
+	Serial.print("EfuseMac       : ");
+	Serial.println(ESP.getEfuseMac());
+	Serial.print("FlashChipMode  : ");
+	Serial.println(ESP.getFlashChipMode());
+	Serial.print("FlashChipSize  : ");
+	Serial.println(ESP.getFlashChipSize());
+	Serial.print("FlashChipSpeed : ");
+	Serial.println(ESP.getFlashChipSpeed());
+	Serial.print("SketchSize     : ");
+	Serial.println(ESP.getSketchSize());
+	Serial.print("SketchMD5      : ");
+	Serial.println(ESP.getSketchMD5());
+	Serial.print("FreeSketchSpace: ");
+	Serial.println(ESP.getFreeSketchSpace());
+	Serial.print("CycleCount     : ");
+	Serial.println(ESP.getCycleCount());
+	Serial.print("FreeHeap       : ");
+	Serial.println(ESP.getFreeHeap());
+	Serial.print("FreePsram      : ");
+	Serial.println(ESP.getFreePsram());
+	Serial.print("PsramSize      : ");
+	Serial.println(ESP.getPsramSize());
+	Serial.print("HeapSize       : ");
+	Serial.println(ESP.getHeapSize());
+	Serial.print("MaxAllocHeap   : ");
+	Serial.println(ESP.getMaxAllocHeap());
+	Serial.print("MaxAllocPsram  : ");
+	Serial.println(ESP.getMaxAllocPsram());
+	Serial.print("MinFreeHeap    : ");
+	Serial.println(ESP.getMinFreeHeap());
+	Serial.print("MinFreePsram   : ");
+	Serial.println(ESP.getMinFreePsram());
+#endif
+}
+
 void initWiFi()
 {
 	WiFi.begin(ssid, password);
@@ -110,6 +194,7 @@ void setup()
 	Serial.print("http://");
 	Serial.println(WiFi.localIP());
 	digitalWrite(led_pin, led_off);
+	boardInfo();
 }
 
 void loop()
